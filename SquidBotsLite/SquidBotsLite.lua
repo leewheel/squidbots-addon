@@ -26,6 +26,9 @@ local STRINGS = {
 		MAINTANK_BAR = "Main Tank", TIP_MAINTANK = "You tank: the off-tank bar opens, Main tank on (a running Dungeon clear stops). Your bots keep their boss strategies. Click again: Leave Tank.",
 		TIP_MAINTANK_SOLO = "Join a group first.",
 		TIP_RECRUIT = "Ask for a tank, a healer or damage. Offers pop up above this bar.",
+		-- By leewheel 20261115 「5人队」按钮：一键标准小队（1 坦克 1 治疗 3 输出，含你自己）
+		PARTY_5 = "Party of 5", TIP_PARTY_5 = "Fills your party with a bot tank, a bot healer and three bot damage dealers of your level (one tank, one healer, three damage: you are one of them). Click again and the party is rebuilt.",
+		-- End By leewheel
 		TIP_ALTS = "Your other characters: log them in as bots, summon them, open their sheet (gear, bags, quests, mounts).",
 		TIP_MOVE = "Shift-drag to move the bar, Ctrl + mouse wheel to resize it.",
 		TIP_PROFILES = "Right click: profiles (farm, strict follow, dungeon).",
@@ -146,6 +149,9 @@ local STRINGS = {
 		MAINTANK_BAR = "Main Tank", TIP_MAINTANK = "Vous tankez : la barre des off-tanks s'ouvre, Main tank actif (un Dungeon clear en cours s'arrête). Vos bots gardent leurs stratégies de boss. Nouveau clic : Quitter tank.",
 		TIP_MAINTANK_SOLO = "Rejoignez d'abord un groupe.",
 		TIP_RECRUIT = "Demandez un tank, un soigneur ou des DPS. Les offres s'affichent au-dessus de la barre.",
+		-- By leewheel 20261115
+		PARTY_5 = "Groupe de 5", TIP_PARTY_5 = "Remplit votre groupe d'un tank, d'un soigneur et de trois DPS robots de votre niveau (un tank, un soigneur, trois DPS : vous en faites partie). Cliquez encore pour refaire le groupe.",
+		-- End By leewheel
 		TIP_ALTS = "Vos autres personnages : connectez-les en bots, appelez-les, ouvrez leur fiche (équipement, sacs, quêtes, montures).",
 		TIP_MOVE = "Maj + glisser pour déplacer la barre, Ctrl + molette pour la redimensionner.",
 		TIP_PROFILES = "Clic droit : les profils (farm, suivi strict, donjon).",
@@ -260,6 +266,9 @@ local STRINGS = {
 		TIP_PULL_DC = "地下城清扫正在进行：拉怪方式由它决定（见它的面板）。清扫结束后恢复自动拉怪。",
 		TIP_DUNGEON = "地下城模式：机器人紧跟在你身边，躲避地面效果，与你一同开战。",
 		TIP_RECRUIT = "请求一名坦克、治疗或伤害。候选会在本栏上方弹出。",
+		-- By leewheel 20261115 「5人队」按钮：一键标准小队（1 坦克 1 治疗 3 输出，含你自己）
+		PARTY_5 = "5人队", TIP_PARTY_5 = "一键组满标准小队：1 坦克 + 1 治疗 + 3 输出，人数含你自己，机器人自动拉到你的等级并跟随。再点一次会按当时的队伍重排。",
+		-- End By leewheel
 		TIP_ALTS = "你的其他角色：以机器人身份登录、召唤过来、打开角色面板（装备、背包、任务、坐骑）。",
 		TIP_MOVE = "Shift + 拖动可移动本栏，Ctrl + 滚轮可缩放。",
 		TIP_PROFILES = "右键：预设（打野、严格跟随、地下城）。",
@@ -400,7 +409,7 @@ K.MAX_TOASTS = 8
 -- Captions in a smaller font than the game's small text, and buttons spaced by the widest caption of the
 -- current language (measured in game): English "Dungeon" needs more room than French "Donjon".
 K.CAPTION_SIZE, K.CAPTION_GAP, K.MIN_STEP, K.FALLBACK_STEP = 8, 3, 37, 52
-local BAR_ORDER = { "follow", "stay", "attack", "passive", "pull", "dungeon", "summon", "alts", "world", "recruit", "maintank", "release" }
+local BAR_ORDER = { "follow", "stay", "attack", "passive", "pull", "dungeon", "summon", "alts", "world", "party5", "recruit", "maintank", "release" }
 -- A member of unknown role is asked "co ?" this long after it shows up (a lfg recruit announces
 -- its role on its own first), and the "Strategies: ..." answer is hidden for K.PROBE_WINDOW seconds.
 K.PROBE_DELAY, K.PROBE_WINDOW, K.PROBE_RETRY = 3, 10, 30
@@ -991,6 +1000,9 @@ local function RecruitMenu()
 			end)
 		end },
 		-- The server answers with a system message: raid built, or how long to wait (players: 30 min).
+		-- By leewheel 20261115 快速组队：.5人队 与主栏的「5人队」按钮同一条命令
+		{ text = L.PARTY_5 .. " (.5人队)", notCheckable = true, func = function() SendChatMessage(".5人队", "SAY") end },
+		-- End By leewheel
 		{ text = L.RAID_10, notCheckable = true, func = function() SendChatMessage(".playerbots coa raid 10", "SAY") end },
 		{ text = L.RAID_15, notCheckable = true, func = function() SendChatMessage(".playerbots coa raid 15", "SAY") end },
 		{ text = L.RAID_25, notCheckable = true, func = function() SendChatMessage(".playerbots coa raid 25", "SAY") end },
@@ -2138,6 +2150,11 @@ local function BuildBar()
 		{ "world", "Interface\\Icons\\INV_Misc_Map_01", "WORLD_BAR", "TIP_WORLD", function()
 			if SquidBotsLite_World then SquidBotsLite_World.Toggle() end
 		end },
+		-- By leewheel 20261115 「5人队」按钮：发 .5人队，服务端快速组队（1 坦克 1 治疗 3 输出，含自己）
+		{ "party5", "Interface\\Icons\\INV_Misc_GroupNeedMore", "PARTY_5", "TIP_PARTY_5", function()
+			SendChatMessage(".5人队", "SAY")
+		end },
+		-- End By leewheel
 		{ "recruit", "Interface\\Icons\\Spell_Frost_SummonWaterElemental", "RECRUIT", "TIP_RECRUIT", function()
 			ShowMenu(RecruitMenu())
 		end },
