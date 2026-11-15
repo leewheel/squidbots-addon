@@ -245,6 +245,134 @@ local STRINGS = {
 		SCALE_SET = "Taille de la barre SquidBots Manager : %s (ce personnage).", SCALE_BAD = "Taille de la barre : un nombre de 0,5 à 2, par exemple /sbl scale 1.2",
 		LANG_SET = "Langue de SquidBots Manager : français.", CHANNEL_SET = "SquidBots Manager demande dans : %s",
 	},
+	zh = {
+		FOLLOW = "跟随", STAY = "停留", ATTACK = "集火", PASSIVE = "被动", ACTIVE = "主动", DUNGEON = "地下城", ALTS_BAR = "小号", RECRUIT = "招募",
+		TIP_FOLLOW = "机器人跟随你。", TIP_STAY = "机器人留在原地。", TIP_ATTACK = "集火：机器人攻击你的目标。先只让坦克上：用「坦克拉我的目标」快捷键，或在图标上右键 > 按职责下令。",
+		TIP_ACTIVE = "主动：机器人正常战斗。点击改为被动：不开战，坦克也不再自行拉怪。",
+		TIP_PASSIVE = "机器人处于被动：不开战、不自动拉怪。点击或下达任一命令即可唤醒。",
+		TOGGLE_PASSIVE = "被动 / 主动", BIND_TANKPULL = "坦克拉我的目标", BIND_RECALL = "召回所有出征的小号",
+		KEY = "快捷键：%s", NO_KEY = "快捷键：尚未设置（Esc > 按键设置 > SquidBots Lite）。",
+		PULL_ON = "自动拉怪", PULL_OFF = "不拉怪", TOGGLE_PULL = "坦克自动拉怪 开 / 关",
+		RAIDFRAMES_ON = "团队框架上的职责图标与机器人菜单：已开启。",
+		RAIDFRAMES_OFF = "团队框架上的职责图标与机器人菜单：已关闭。",
+		TIP_PULL_ON = "自动拉怪：坦克自行攻击附近的怪物。点击让它等待：只打你或队伍攻击的目标。",
+		TIP_PULL_OFF = "坦克不再自行拉怪：战斗由你决定。点击恢复自动拉怪。",
+		TIP_PULL_DC = "地下城清扫正在进行：拉怪方式由它决定（见它的面板）。清扫结束后恢复自动拉怪。",
+		TIP_DUNGEON = "地下城模式：机器人紧跟在你身边，躲避地面效果，与你一同开战。",
+		TIP_RECRUIT = "请求一名坦克、治疗或伤害。候选会在本栏上方弹出。",
+		TIP_ALTS = "你的其他角色：以机器人身份登录、召唤过来、打开角色面板（装备、背包、任务、坐骑）。",
+		TIP_MOVE = "Shift + 拖动可移动本栏，Ctrl + 滚轮可缩放。",
+		TIP_PROFILES = "右键：预设（打野、严格跟随、地下城）。",
+		PROFILES = "预设", P_FARM = "打野（狩猎、拾取、进食）", P_STRICT = "严格跟随",
+		P_DUNGEON = "地下城模式", P_LEAVE_DUNGEON = "退出地下城模式",
+		ASK_TANK = "招募坦克", ASK_HEAL = "招募治疗", ASK_DPS = "招募伤害", ASK_ALL = "三者都招募",
+		GM_ON = "GM 模式已开启：机器人用 .playerbots coa 召唤。",
+		GM_OFF = "GM 模式已关闭：机器人用 lfg bot 招募，与普通玩家相同。",
+		GEAR = "为队伍更换最佳装备",
+		GEAR_ASK_ALL = "队伍里每个机器人都会获得当前等级对应的免费装备，替换它现在穿的。确定吗？",
+		GEAR_ASK_ONE = "%s 会获得当前等级对应的免费装备，替换它现在穿的。靠自己打装备的玩家可能不想要这个。确定吗？",
+		REPAIR = "修理全队",
+		RAID_10 = "10 名机器人团队", RAID_25 = "25 名机器人团队", REGEAR = "重新装备 60 级以上机器人（GM）",
+		TRAIN = "向目标学习（训练师）", M_TRAIN = "向目标学习（训练师）",
+		QUESTS = "接取我的任务（在任务给予者旁）",
+		M_GATHER_ALL = "全部采集（含灰色物品）", M_GATHER_SKILLUP = "只采集能提升技能的",
+		GATHER = "采集（全队）",
+		DC_DISABLED = "本服务器已停用地下城清扫。",
+		DC_LINE = "地下城清扫", DC_PAUSED = "已暂停", DC_STOPPED = "已停止",
+		DC_NOT_IN_DUNGEON = "地下城清扫需在地下城内、且队伍里有坦克机器人时启动：它带队，你跟随。", DC_ABSENT = "本服没有地下城清扫模块：再点一次「地下城」进入 SquidBots 地下城模式。", DC_ON = "开始", DC_OFF = "结束", DC_PAUSE_B = "暂停", DC_SKIP_B = "跳过",
+		DC_P_DYN = "动态", DC_P_LEEROY = "莽夫", DC_P_ADV = "进阶",
+		DC_BOSSES_T = "首领", DC_REFRESH = "刷新", DC_GO = "前往", DC_NEXT = "下一个首领：%s", DC_NONE = "无",
+		DC_NO_LIST = "还没有列表：在地下城内、队伍里有坦克机器人时点击刷新。",
+		DC_PULL_T = "拉怪方式", DC_STALLED = "受阻", DC_RESUME = "继续",
+		TIP_DC_ON = "坦克带队逐区推进地下城，一个首领接一个首领，沿途清掉小怪。需在地下城内、队伍里有坦克机器人。",
+		TIP_DC_OFF = "结束清扫：机器人回来继续跟随你。",
+		TIP_DC_PAUSE = "坦克原地停下，清扫不结束；再点一次继续。",
+		TIP_DC_SKIP = "坦克放弃当前目标（够不到的首领、卡住的步骤）转去下一个首领。被跳过的首领仍留在列表里：点「前往」可回到那里。",
+		TIP_DC_P_DYN = "逐波推进：径直走进简单的一波，把规模大或密集的一波拉回集合点。适合大多数地下城。",
+		TIP_DC_P_LEEROY = "见一波就冲进去原地开打。最快，适合你装备碾压的地下城。",
+		TIP_DC_P_ADV = "把每一波都拉回固定集合点再打。最慢也最安全。",
+		TIP_DC_REFRESH = "向坦克重新索取首领列表。",
+		TIP_DC_GO = "坦克直接前往该首领（若清扫已停止则顺带启动）。",
+		DC_ALIVE = "存活", DC_DEAD = "已死亡", DC_SKIPPED = "已跳过", DC_MISSING = "未找到", DC_RUNNING = "进行中",
+		TIP_DUNGEON_DC = "地下城清扫：坦克带队推进地下城。打开它的面板（首领、前往、拉怪方式）。旧的地下城模式在面板和本栏右键菜单里。",
+		DC_MANUAL = "地下城模式（你带队）",
+		TIP_DC_MANUAL = "旧版地下城按钮：机器人紧跟在你身边，躲避地面效果，与你一同开战。",
+		DC_AUTO = "进入地下城与团队时打开", TIP_DC_AUTO = "进入地下城或团队时自动打开一次本面板（若有战斗则战斗结束后打开）。",
+		DC_MT = "主坦克", TIP_DC_MT = "你来坦克：本面板关闭、团队坦克栏打开，主坦克开启（进行中的清扫停止，由你带队）。在坦克栏点「退出坦克」可回到本面板。",
+		DC_OFF_FOR_MT = "地下城清扫已关闭：由你担任主坦克带队。",
+		MAINTANK_BAR = "主坦克", TIP_MAINTANK = "你来坦克：副坦克栏打开，主坦克开启（进行中的地下城清扫停止）。你的机器人保留首领策略。再次点击：退出坦克。",
+		TIP_MAINTANK_SOLO = "请先加入队伍。",
+		NO_TRAINER = "请先选中一位训练师（职业或专业）：机器人会学会它教的一切。",
+		ALTS = "我的小号", ALTS_REFRESH = "刷新", ALTS_ADD = "登录", ALTS_REMOVE = "登出", ALTS_SUMMON = "召唤", ALTS_SHEET = "角色面板",
+		ALTS_LEVEL = "%d 级 %s", ALTS_UNKNOWN = "等级未知", ALTS_NO_SPEC = "无专精",
+		TIP_SHEET = "机器人面板：该小号的装备、背包、任务与坐骑。",
+		MISSIONS = "出征任务", TEAMS = "队伍预设", T_LOGIN = "登录（%d）", T_LOGOUT = "登出", T_DELETE = "删除", T_SAVE_GROUP = "把我的队伍保存为预设...",
+		T_SAVE_ONLINE = "把已登录的小号保存为预设...", T_NAME = "预设名称：", T_NONE = "还没有预设。",
+		T_SAVED = "预设 %s 已保存：%d 个角色。", T_STARTED = "预设 %s：正在登录 %d 个角色，每秒一个。",
+		T_EMPTY = "没有可保存的对象：请先邀请或登录你的小号。",
+		DASHBOARD = "总览面板", ACCOUNTS = "账号", A_SHOW = "显示我关联的账号", A_LINK = "关联账号...", A_KEY = "设置该账号的密钥...",
+		A_LOGIN_ALL = "登录它的全部角色", A_UNLINK = "取消关联", A_NAME = "要关联的账号名：",
+		A_KEYFOR = "%s 的安全密钥（在该账号上用「设置该账号的密钥」设定）：", A_MYKEY = "本账号的密钥（字母与数字）：",
+		A_BAD = "只能包含字母、数字和 _。", A_NONE = "尚不知晓已关联的账号：请用「显示我关联的账号」。",
+		A_HOWTO = "要操作其他账号的角色：先在该账号上登录一次并设置它的密钥，然后在这里用该密钥关联。",
+		ALTS_WAIT = "正在询问服务器...", ALTS_EMPTY = "本账号没有其他角色。",
+		ALTS_NO_REPLY = "服务器无响应：是否安装了机器人模块？", ALTS_MORE = "另有 %d 个未显示。",
+		ALTS_HELP = "点击已登录的小号查看角色面板。悬停图标可看它的作用。",
+		ALTS_COUNT = "%d / %d 已登录", ALTS_MISSION = "出征中：%d 分钟，%d 件物品", TIP_ALTS_REFRESH = "重新向服务器索取你的角色。",
+		TIP_ALT_ADD = "它以机器人身份加入你的队伍。", TIP_ALT_REMOVE = "将它从游戏中登出。",
+		TIP_ALT_SUMMON = "把它带过来：小号在原登出地点上线。",
+		ALTS_LOOK = "若服务器设置了 CoA.CollectionsForBots = 1，它会保留外观（衣橱、坐骑）。",
+		ALTS_TIP_CLICK = "点击：打开它的机器人面板。", ALTS_GOLD = "金币：%s", ALTS_XP = "经验：%d%%（充分休息 %d%%）",
+		INVITE = "邀请", ASKED = "已在 %s 中请求：%s",
+		ASK_NONE = "没有%s回应：只有和你等级相差 2 级以内的机器人才能来。过一分钟再问，或者带一个自己的小号（我的小号）。", NO_CHANNEL = "无法加入「%s」频道：输入 /join %s 加入后再问（或用 /sbl channel <频道名>）。", JOINING = "不在「本地防务」或「新手」频道：正在加入 %s，随后发送询问。",
+		NOT_IN_GROUP = "你不在与机器人组成的队伍中。",
+		LOW_MANA = "法力不足", PULLING = "拉怪中", REZ = "复活",
+		M_FOLLOW = "跟着我", M_STAY = "留在这里", M_ATTACK = "攻击我的目标", M_SUMMON = "到我这里来",
+		M_AUTOPULL_ON = "开启自动拉怪", M_AUTOPULL_OFF = "关闭自动拉怪", M_KICK = "移出队伍",
+		M_TAKE_LEAD = "把队长给我", M_MAKE_LEADER = "让它当队长",
+		M_MARK_ON = "标记它的目标（骷髅）", M_MARK_OFF = "停止标记",
+		ALTS_LINKED = "已关联账号", ALTS_FROM_LINKED = "来自已关联账号：用它登录过一次，会一直列在这里。",
+		M_SHEET = "机器人面板（装备、背包、任务）", M_STATS = "状态（背包、金钱、经验）", M_GEAR = "最佳装备", M_HEAL_ME = "只治疗我", M_HEAL_ALL = "治疗整队",
+		SUMMON = "集合", TIP_SUMMON = "机器人传送到你身边。有人卡住时很有用。",
+		RELEASE = "释放灵魂", TIP_RELEASE = "有机器人死亡时显示：死亡的机器人释放灵魂并跑回尸体。",
+		ROLE_ORDERS = "按职责下令", R_TANK_ATTACK = "坦克：攻击我的目标", R_DPS_ATTACK = "伤害：攻击我的目标",
+		R_HEAL_FOLLOW = "治疗：跟着我", R_HEAL_STAY = "治疗：留在这里", R_MELEE_FLEE = "近战：退回我身边，暂不攻击",
+		FORMATION = "阵型", F_NEAR = "靠拢（默认）", F_LINE = "横排", F_CIRCLE = "圆形", F_SHIELD = "环绕我成盾",
+		F_ARROW = "箭形", F_QUEUE = "纵队",
+		ROLES_ON = "自动职责已开启：职责未知的机器人会被问一次「co ?」，回答不显示。",
+		OUTDATED = "SquidBots Lite %s 比服务器上的 CoA Bots %s 旧。新版本：https://github.com/Zyth45/squidbots-addon/releases/latest",
+		ROLES_OFF = "自动职责已关闭。",
+		SPECS = "专精", SPEC_MENU = "专精", SPEC_OPEN = "全队专精...",
+		MY_ROLE = "我的职责：", ROLE_TANK = "坦克", ROLE_HEAL = "治疗", ROLE_DPS = "伤害", SUPPORT = "辅助",
+		SPEC_PICK = "专精", SPECS_REFRESH = "刷新", BALANCE = "平衡队伍",
+		TIP_BALANCE = "一名坦克加一名治疗（含你自己的职责），其余全部伤害。原本就担任该职责的机器人保留自己的专精。",
+		SPECS_WAIT = "正在询问...", SPEC_UNKNOWN = "？", SPECS_NONE = "队伍里没有机器人。", SPECS_NO_REPLY = "无回应",
+		SPECS_HELP = "点击某个职责可把机器人切换到该职责（它最近在此职责下使用的专精），或点「专精」自行选择。技能循环与站位会随之调整。小号会保留你的选择，并使用你为该专精配好的天赋。",
+		TIP_BOT_ICON = "点击：命令与专精。", SPEC_ALT_NOTE = "你的小号会保留它，并使用你给它的天赋。",
+		SPEC_NOW = "%s 现在担任 %s（%s）。", SPEC_NO_ROLE = "%s 没有适用于 %s 职责的专精。",
+		BALANCE_DONE = "队伍：%s。", BALANCE_MISSING = "队伍里没有机器人能担任 %s。",
+		BALANCE_WAIT = "正在询问机器人的专精...", BALANCE_RAID = "在团队中，团队命令已经分配好职责：请逐个机器人选择专精。",
+		SPECS_NOT_BOT = "不是机器人", SPEC_ASK = "询问该机器人", TIP_ROLE = "切换到 %s。", TIP_NO_ROLE = "该职责下没有专精。",
+		HELP = "SquidBots Lite：/sbl（显示/隐藏）、/sbl show、/sbl hide、/sbl scale 0.5-2、/sbl lang fr|en|zh、/sbl channel <频道名>、/sbl alts、/sbl dashboard、/sbl spec、/sbl roles on|off、/sbl gm（仅 GM）、/sbl reset。按键设置：Esc > 按键设置 > SquidBots Lite。",
+		SCALE_SET = "SquidBots Lite 面板缩放：%s（本角色）。", SCALE_BAD = "面板缩放：0.5 到 2 之间的数字，例如 /sbl scale 1.2",
+		LANG_SET = "SquidBots Lite 语言：简体中文。", CHANNEL_SET = "SquidBots Lite 询问频道：%s",
+		ALTS_IN = "正在登录...", ALTS_OUT = "正在登出...",
+		LFG_CLASS = "按职业点名",
+		LFG_CLASS_TITLE = "指定职业的机器人",
+		LFG_EVERY = "每分钟每个职业各问一次",
+		LFG_WAIT = "%s：等 %d 秒",
+		ROLE_TANK_SHORT = "坦克",
+		ROLE_HEAL_SHORT = "治疗",
+		ROLE_DPS_SHORT = "输出",
+		RAID_15 = "15 人团队（风暴狂潮）",
+		ICONS_ON = "小队框架上的背包图标：已开启。",
+		TIP_BAG_ICON = "点击：打开它的背包。",
+		TIP_SHEET_ICON_RO = "点击：打开它的面板（只读，不是你的角色）。",
+		WORLD_BAR = "世界",
+		TIP_WORLD = "公会订单、机器人工匠与世界事件（入侵、淘金潮、全服首杀）。",
+		TIP_SHEET_ICON = "点击：打开它的面板（装备、专精、灵魂）。",
+		ICONS_OFF = "小队框架上的背包图标：已关闭。",
+	},
 }
 
 local L
@@ -433,9 +561,19 @@ local function Print(text)
 end
 
 local function SetLanguage(lang)
-	if lang ~= "fr" and lang ~= "en" then
-		lang = (GetLocale() == "frFR") and "fr" or "en"
+	-- By leewheel 20261115 语言选择支持简体中文（zh 表由本服维护，随上游升级回植）
+	if lang ~= "fr" and lang ~= "en" and lang ~= "zh" then
+		-- 本服 Ascension 客户端 GetLocale() 恒为 enUS（中文是直接写进 enUS 列的），
+		-- 用它判定会永远落到英语表，所以未指定语言时默认简体中文。
+		lang = "zh"
 	end
+	-- 一次性迁移：旧版在 enUS 客户端上把自动判定结果写成了 "en"，会让中文服玩家
+	-- 永久锁死英文界面；这里纠正一次。之后玩家手动 /sbl lang en|fr|zh 仍然有效。
+	if not SquidBotsLiteDB.langZhMigrated then
+		SquidBotsLiteDB.langZhMigrated = true
+		if lang == "en" then lang = "zh" end
+	end
+	-- End By leewheel
 	SquidBotsLiteDB.lang = lang
 	L = STRINGS[lang]
 	-- Names shown in the game's Key Bindings window (the bindings themselves are in Bindings.xml).
@@ -974,22 +1112,26 @@ local WOTLK_TOKENS = { WARRIOR = true, PALADIN = true, HUNTER = true, ROGUE = tr
 	SHAMAN = true, MAGE = true, WARLOCK = true, DRUID = true }
 -- The classic trees, index 0 to 2 as "wcr spec" takes them: English name, French name, role.
 local WCR_SPECS = {
-	WARRIOR = { { "Arms", "Armes", "dps" }, { "Fury", "Fureur", "dps" }, { "Protection", "Protection", "tank" } },
-	PALADIN = { { "Holy", "Sacré", "heal" }, { "Protection", "Protection", "tank" }, { "Retribution", "Vindicte", "dps" } },
-	HUNTER = { { "Beast Mastery", "Maîtrise des bêtes", "dps" }, { "Marksmanship", "Précision", "dps" }, { "Survival", "Survie", "dps" } },
-	ROGUE = { { "Assassination", "Assassinat", "dps" }, { "Combat", "Combat", "dps" }, { "Subtlety", "Finesse", "dps" } },
-	PRIEST = { { "Discipline", "Discipline", "heal" }, { "Holy", "Sacré", "heal" }, { "Shadow", "Ombre", "dps" } },
-	DEATHKNIGHT = { { "Blood", "Sang", "tank" }, { "Frost", "Givre", "dps" }, { "Unholy", "Impie", "dps" } },
-	SHAMAN = { { "Elemental", "Élémentaire", "dps" }, { "Enhancement", "Amélioration", "dps" }, { "Restoration", "Restauration", "heal" } },
-	MAGE = { { "Arcane", "Arcanes", "dps" }, { "Fire", "Feu", "dps" }, { "Frost", "Givre", "dps" } },
-	WARLOCK = { { "Affliction", "Affliction", "dps" }, { "Demonology", "Démonologie", "dps" }, { "Destruction", "Destruction", "dps" } },
-	DRUID = { { "Balance", "Équilibre", "dps" }, { "Feral Combat", "Combat farouche", "tank" }, { "Restoration", "Restauration", "heal" } },
+	-- By leewheel 20261115 专精表保留第四列简体中文名（识别用的第一列保持英文）
+	WARRIOR = { { "Arms", "Armes", "dps", "武器" }, { "Fury", "Fureur", "dps", "狂怒" }, { "Protection", "Protection", "tank", "防护" } },
+	PALADIN = { { "Holy", "Sacré", "heal", "神圣" }, { "Protection", "Protection", "tank", "防护" }, { "Retribution", "Vindicte", "dps", "惩戒" } },
+	HUNTER = { { "Beast Mastery", "Maîtrise des bêtes", "dps", "野兽控制" }, { "Marksmanship", "Précision", "dps", "射击" }, { "Survival", "Survie", "dps", "生存" } },
+	ROGUE = { { "Assassination", "Assassinat", "dps", "刺杀" }, { "Combat", "Combat", "dps", "战斗" }, { "Subtlety", "Finesse", "dps", "敏锐" } },
+	PRIEST = { { "Discipline", "Discipline", "heal", "戒律" }, { "Holy", "Sacré", "heal", "神圣" }, { "Shadow", "Ombre", "dps", "暗影" } },
+	DEATHKNIGHT = { { "Blood", "Sang", "tank", "鲜血" }, { "Frost", "Givre", "dps", "冰霜" }, { "Unholy", "Impie", "dps", "邪恶" } },
+	SHAMAN = { { "Elemental", "Élémentaire", "dps", "元素" }, { "Enhancement", "Amélioration", "dps", "增强" }, { "Restoration", "Restauration", "heal", "恢复" } },
+	MAGE = { { "Arcane", "Arcanes", "dps", "奥术" }, { "Fire", "Feu", "dps", "火焰" }, { "Frost", "Givre", "dps", "冰霜" } },
+	WARLOCK = { { "Affliction", "Affliction", "dps", "痛苦" }, { "Demonology", "Démonologie", "dps", "恶魔学识" }, { "Destruction", "Destruction", "dps", "毁灭" } },
+	DRUID = { { "Balance", "Équilibre", "dps", "平衡" }, { "Feral Combat", "Combat farouche", "tank", "野性战斗" }, { "Restoration", "Restauration", "heal", "恢复" } },
+	-- End By leewheel
 }
 -- The WotLK classes as the lfg offers name them (English), with their token and French name.
 local WCR_CLASSES = {
-	{ "Death Knight", "DEATHKNIGHT", "Chevalier de la mort" }, { "Warrior", "WARRIOR", "Guerrier" }, { "Paladin", "PALADIN", "Paladin" },
-	{ "Hunter", "HUNTER", "Chasseur" }, { "Rogue", "ROGUE", "Voleur" }, { "Priest", "PRIEST", "Prêtre" },
-	{ "Shaman", "SHAMAN", "Chaman" }, { "Mage", "MAGE", "Mage" }, { "Warlock", "WARLOCK", "Démoniste" }, { "Druid", "DRUID", "Druide" },
+	-- By leewheel 20261115 职业表保留第四列简体中文名（识别用的第一列保持英文）
+	{ "Death Knight", "DEATHKNIGHT", "Chevalier de la mort", "死亡骑士" }, { "Warrior", "WARRIOR", "Guerrier", "战士" }, { "Paladin", "PALADIN", "Paladin", "圣骑士" },
+	{ "Hunter", "HUNTER", "Chasseur", "猎人" }, { "Rogue", "ROGUE", "Voleur", "盗贼" }, { "Priest", "PRIEST", "Prêtre", "牧师" },
+	{ "Shaman", "SHAMAN", "Chaman", "萨满祭司" }, { "Mage", "MAGE", "Mage", "法师" }, { "Warlock", "WARLOCK", "Démoniste", "术士" }, { "Druid", "DRUID", "Druide", "德鲁伊" },
+	-- End By leewheel
 }
 -- Set aside by the server (CoaExcludedSpecializations): nothing in the core lets Bloodmage Eternal tank.
 local EXCLUDED_SPECS = { Eternal = true }
@@ -1110,10 +1252,18 @@ function SquidBotsLite_BotKind(name) return who.Kind(name) end
 
 -- The three trees of a WotLK class bot, named in the addon's language: no list to wait for.
 local function WcrList(token)
-	local list, fr = {}, SquidBotsLiteDB.lang == "fr"
+	-- By leewheel 20261115 中文界面用第四列中文专精名
+	local list, lang = {}, SquidBotsLiteDB.lang
 	for i, tree in ipairs(WCR_SPECS[token]) do
-		table.insert(list, { name = fr and tree[2] or tree[1], en = tree[1], index = i - 1, role = tree[3] })
+		local name = tree[1]
+		if lang == "fr" then
+			name = tree[2]
+		elseif lang == "zh" then
+			name = tree[4] or tree[1]
+		end
+		table.insert(list, { name = name, en = tree[1], index = i - 1, role = tree[3] })
 	end
+	-- End By leewheel
 	return list
 end
 
@@ -3191,14 +3341,18 @@ local function OnWhisper(message, sender)
 	if not class then
 		for _, wotlk in ipairs(WCR_CLASSES) do
 			if message:find(wotlk[1], 1, true) then
-				class, token = SquidBotsLiteDB.lang == "fr" and wotlk[3] or wotlk[1], wotlk[2]
+				-- By leewheel 20261115 中文界面用第四列中文职业名
+				class, token = (SquidBotsLiteDB.lang == "fr" and wotlk[3]) or (SquidBotsLiteDB.lang == "zh" and wotlk[4]) or wotlk[1], wotlk[2]
+				-- End By leewheel
 				break
 			end
 		end
 	end
 	-- A Wildcard Hero offers itself as "Hero" (class 10), in no class list above.
 	if not class and message:find("Hero", 1, true) then
-		class = SquidBotsLiteDB.lang == "fr" and "Héros" or "Hero"
+		-- By leewheel 20261115 中文界面显示「英雄」
+		class = (SquidBotsLiteDB.lang == "fr" and "Héros") or (SquidBotsLiteDB.lang == "zh" and "英雄") or "Hero"
+		-- End By leewheel
 	end
 	local lower = string.lower(message)
 	if not class or not (lower:find("invite") or lower:find("service") or lower:find("ready") or lower:find("available") or lower:find("looking")) then

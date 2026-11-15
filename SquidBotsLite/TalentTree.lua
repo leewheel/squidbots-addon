@@ -16,6 +16,11 @@ local STRINGS = {
 		NOCLASS = "Pas de vue en arbre pour la classe de ce bot (les 21 classes CoA seulement) : ses talents sont dans la liste.", RANK = "Rang %d / %d", LEARN = "Clic : apprendre un rang.", LOCKED = "Pas encore disponible.",
 		RO = "Lecture seule : ce n'est pas un de vos personnages.", OTHER = "Une autre spé de la classe : à regarder seulement.",
 		KNOWN = "Appris (un sort de spé donné par le niveau).", AT_LEVEL = "Débloqué au niveau %d.", SPEC_SPELL = "Un sort de spé donné par le niveau." },
+	-- 简体中文（leewheel 20261115 随 CoA Bots 3.1.1 移植）
+	zh = { TREE = "天赋树", LIST = "列表", PTS = "%d / %d 点", NONE = "还没有天赋树：本服的 CoA Bots 未发送（需要 3.0 或更高）；天赋在列表里。",
+		NOCLASS = "该机器人的职业没有天赋树视图（仅限 21 个 CoA 职业）：它的天赋在列表里。", RANK = "第 %d / %d 级", LEARN = "点击：学习一级。", LOCKED = "尚未可用。",
+		RO = "只读：不是你的角色。", OTHER = "该职业的另一专精：仅供查看。",
+		KNOWN = "已学（该等级给予的专精法术）。", AT_LEVEL = "%d 级解锁。", SPEC_SPELL = "该等级给予的专精法术。" },
 }
 
 local TT = { mode = "tree", data = nil, pending = nil, tree = nil, askedAt = nil, name = nil, LINE = 2 }

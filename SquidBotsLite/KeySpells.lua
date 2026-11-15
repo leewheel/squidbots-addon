@@ -36,6 +36,19 @@ local STRINGS = {
 		KEEP_ERR = "%s : impossible de garder %s (%s).", R_unknown = "sort inconnu", R_off = "option désactivée",
 		B_BAR = "Barre des sorts clés",
 	},
+	-- By leewheel 20261115 关键法术栏简体中文（3.1.1 新增文件，从零翻译）
+	zh = {
+		TITLE = "关键法术", NO_BOT = "你的队伍里还没有机器人拥有可用的关键法术。",
+		TIP_CLICK = "点击：%s 将其施放%s。", ON_TARGET = "于你的目标或你身上", ON_SELF = "于全队",
+		ON_DEAD = "于你已死亡的目标身上", TIP_KEEP = "右键：锁定该法术（机器人不再自行施放）。",
+		TIP_UNKEEP = "右键：把该法术还给机器人自行施放。", TIP_KEPT = "已锁定：只有你点击时才会施放。",
+		TIP_READY = "就绪。", TIP_CD = "冷却：%d 秒。", TIP_GUESS = "根据它的职业推测：本服没有列出该法术。",
+		NEED_DEAD = "请先选中已死亡的玩家。", NO_KEEP = "锁定法术需要服务器支持（keepcd）。",
+		CAST = "%s：%s...", KEPT = "%s 已锁定 %s，等你的点击。", FREED = "%s 可以重新自行施放 %s 了。",
+		KEEP_ERR = "%s：无法锁定 %s（%s）。", R_unknown = "未知法术", R_off = "该选项未开启",
+		B_BAR = "关键法术栏",
+	},
+	-- End By leewheel
 }
 
 local function T(key)

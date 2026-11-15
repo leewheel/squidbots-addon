@@ -55,6 +55,29 @@ local STRINGS = {
 		RESTED = "reposé +%d %%", CLICK = "Clic : sa fiche de bot.", OFFLINE_DATA = "Dernières données : %s",
 		PROFS = "Métiers",
 	},
+	-- 简体中文（leewheel 20261115 随 CoA Bots 3.1.1 移植并补译）
+	zh = {
+		TITLE = "小号总览", SUB = "SquidBots Lite  ·  %s", REFRESH = "刷新",
+		TIP_REFRESH = "重新向每个已登录的小号索取等级、金币、背包与专业信息。",
+		ONLINE = "已登录", OUT = "出征中", GOLD = "全队金币", ALERTS = "待办",
+		TIP_GOLD = "你小号的金币：已下线的角色显示的是最后一次上报的数额。", NONE = "无",
+		ALERT_BAGS = "%d 个背包", ALERT_GEAR = "%d 件装备", ALERT_TRAIN = "%d 个技能",
+		EMPTY = "还没有已知的小号：打开「我的小号」（或登录一个），你的小号会出现在这里。",
+		MORE = "滚轮：还有 %d 个", NO_DATA = "暂无数据：登录它一次即可",
+		ST_follow = "跟随中", ST_stay = "停留中", ST_far = "距离远", ST_dead = "已死亡", ST_mission = "出征中",
+		ST_offline = "离线", ST_online = "在线",
+		SEEN = "最后在线 %s", FREE = "空闲：无出征", LEVEL = "%d 级", MAX_LEVEL = "满级",
+		M_WORK = "在 %s %s  ·  %d 分钟  ·  %d 件物品", M_TRAVEL = "前往 %s  ·  %d 分钟", M_DELIVER = "邮寄战利品  ·  %d 件物品",
+		SEND = "派去出征", TIP_SEND = "%s，%d 分钟（沿用出征任务窗口的选择）。已满：%d/%d 个小号在外。",
+		RECALL = "召回", TIP_RECALL = "立刻结束它的出征：它返回并把采集到的邮寄给你。",
+		AUTO = "它自己的采集专业", FULL = "已经有 %d 个小号出征了。",
+		NEXT_GO = "%s：去找训练师", NEXT_LEVEL = "%s：需要 %d 级", TOP = "最高等级",
+		A_BAGS = "背包已满", A_BAGS_LOW = "背包快满了（还剩 %d 格）", A_DURA = "耐久 %d%%：需要修理",
+		A_TRAIN = "%s：可在训练师处学 %s", A_SLOTS = "没有空位再学一个主专业（%d/%d）",
+		ENCH = "队伍附魔师", BAGS = "背包 %d/%d", DURA = "最低耐久 %d%%", XP = "经验 %d / %d（%d%%）",
+		RESTED = "充分休息 +%d%%", CLICK = "点击：它的机器人面板。", OFFLINE_DATA = "最后数据：%s",
+		PROFS = "专业",
+	},
 }
 local function T(key)
 	local lang = SquidBotsLiteDB and SquidBotsLiteDB.lang
@@ -65,6 +88,7 @@ end
 local RANKS = {
 	en = { "Apprentice", "Journeyman", "Expert", "Artisan", "Master", "Grand Master" },
 	fr = { "Apprenti", "Compagnon", "Expert", "Artisan", "Maître", "Grand maître" },
+	zh = { "学徒", "熟练工", "专家", "技师", "大师", "宗师" },
 }
 local function Rank(step)
 	local lang = SquidBotsLiteDB and SquidBotsLiteDB.lang
