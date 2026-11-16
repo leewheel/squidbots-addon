@@ -1,4 +1,4 @@
--- SquidBots Lite 3.0: the World panel (guild orders, artisans, world events) and the bots' soul.
+-- SquidBots Manager 3.0: the World panel (guild orders, artisans, world events) and the bots' soul.
 -- Protocol: docs/WORLD-PROTOCOLE-3.0.md. Addon messages, prefix "SQBW", tab-separated:
 --   guild, artisans, events: whispered to oneself, the server answers by addon whispers from oneself;
 --   soul: "SOUL?" whispered to the bot, which answers.
@@ -42,7 +42,9 @@ local STRINGS = {
 		GM_NOANSWER = "No answer from the server in 3 s. Type the same command by hand to check: .coaworld %s",
 		GM_CHOSEN = "Target: %s. Start launches it.", F_level = "level %s", F_boss = "%s",
 		R_quality = "quality too high", R_daily = "daily limit reached", R_noguild = "no guild", R_item = "unknown item",
-		R_qty = "quantity not allowed", R_off = "off on this realm", R_nobot = "no guild bot online", R_cannot = "no such recipe",
+		R_qty = "quantity not allowed", R_off = "off on this realm", R_nobot = "no guild bot online", R_noah = "no stock, no crafter online, none at the auction house",
+		R_ahprice = "no stock, no crafter online, too expensive at the auction house",
+		R_ahgold = "no stock, no crafter online, nobody has the gold for the auction house", R_cannot = "no such recipe",
 		R_busy = "the artisan is busy", R_mats = "no materials", R_expired = "quote too old: ask again",
 		R_faction = "other faction", R_price = "the price went up: ask a new quote", R_offline = "the bot is offline",
 		R_notyours = "not your bot",
@@ -61,7 +63,8 @@ local STRINGS = {
 		GF_ACCEPT = "Accept", GF_DECLINE = "Decline", GF_EMPTY = "empty slot", GF_CHAT = "%s offers you %s (%s): open World > Guild > Gifts to accept.",
 		GC_HINT = "What your guild's online bots have in stock or can craft. Search by English name; click an item to order it.",
 		GC_SEARCH = "Search (English name)...", GC_NONE = "Nothing found.", GC_STOCK = "in stock: %s x%d", GC_CRAFT = "crafted by %s",
-		GC_REQ = "level %d", GC_PAGE = "Page %d / %d", GC_SLOT = "Slot: %s", GC_USABLE = "Usable now", C_OTHER = "Other",
+		GC_REQ = "level %d", GC_PAGE = "Page %d / %d", GC_SLOT = "Slot: %s", GC_USABLE = "Usable now", GC_REFRESH = "Refresh",
+		GC_REFRESH_TIP = "Asks the guild's catalogue again. The server renews it every 5 minutes.", C_OTHER = "Other",
 		GA_HINT = "Your guild's bots with you: rally them where you are, make a dungeon party, or a guild raid.",
 		GA_gather = "Rally the guild", GA_party5 = "Dungeon party (5)", GA_raid10 = "Guild raid (10)", GA_raid15 = "Guild raid (15)",
 		GA_raid25 = "Guild raid (25)", GS_ready = "ready", GS_busy = "under way", GS_cooldown = "again in %s", GS_nobots = "not enough bots",
@@ -105,7 +108,9 @@ local STRINGS = {
 		GM_NOANSWER = "Pas de réponse du serveur en 3 s. Tapez la même commande à la main pour vérifier : .coaworld %s",
 		GM_CHOSEN = "Cible : %s. Lancer la démarre.", F_level = "niveau %s", F_boss = "%s",
 		R_quality = "qualité trop haute", R_daily = "limite du jour atteinte", R_noguild = "pas de guilde", R_item = "objet inconnu",
-		R_qty = "quantité refusée", R_off = "coupé sur ce royaume", R_nobot = "aucun bot de guilde en ligne", R_cannot = "recette inconnue",
+		R_qty = "quantité refusée", R_off = "coupé sur ce royaume", R_nobot = "aucun bot de guilde en ligne", R_noah = "pas de stock, aucun artisan en ligne, rien à l'HV",
+		R_ahprice = "pas de stock, aucun artisan en ligne, trop cher à l'HV",
+		R_ahgold = "pas de stock, aucun artisan en ligne, personne n'a l'or pour l'HV", R_cannot = "recette inconnue",
 		R_busy = "l'artisan est occupé", R_mats = "pas de composants", R_expired = "devis trop vieux : redemandez",
 		R_faction = "autre faction", R_price = "le prix a monté : redemandez un devis", R_offline = "le bot est hors ligne",
 		R_notyours = "pas votre bot",
@@ -124,7 +129,8 @@ local STRINGS = {
 		GF_ACCEPT = "Accepter", GF_DECLINE = "Refuser", GF_EMPTY = "emplacement vide", GF_CHAT = "%s vous offre %s (%s) : Monde > Guilde > Dons pour l'accepter.",
 		GC_HINT = "Ce que les bots de votre guilde en ligne ont en stock ou savent fabriquer. Cherchez par nom anglais ; cliquez un objet pour le commander.",
 		GC_SEARCH = "Chercher (nom anglais)...", GC_NONE = "Rien trouvé.", GC_STOCK = "en stock : %s x%d", GC_CRAFT = "fabriqué par %s",
-		GC_REQ = "niveau %d", GC_PAGE = "Page %d / %d", GC_SLOT = "Emplacement : %s", GC_USABLE = "Utilisable", C_OTHER = "Autre",
+		GC_REQ = "niveau %d", GC_PAGE = "Page %d / %d", GC_SLOT = "Emplacement : %s", GC_USABLE = "Utilisable", GC_REFRESH = "Actualiser",
+		GC_REFRESH_TIP = "Redemande le catalogue de la guilde. Le serveur le renouvelle toutes les 5 minutes.", C_OTHER = "Autre",
 		GA_HINT = "Les bots de votre guilde avec vous : rassemblez-les où vous êtes, formez un groupe de donjon ou un raid de guilde.",
 		GA_gather = "Rassembler la guilde", GA_party5 = "Groupe de donjon (5)", GA_raid10 = "Raid de guilde (10)", GA_raid15 = "Raid de guilde (15)",
 		GA_raid25 = "Raid de guilde (25)", GS_ready = "prêt", GS_busy = "en cours", GS_cooldown = "à nouveau dans %s", GS_nobots = "pas assez de bots",
@@ -171,6 +177,10 @@ local STRINGS = {
 		GM_CHOSEN = "目标：%s。点「开始」发动。", F_level = "%s 级", F_boss = "%s",
 		R_quality = "品质过高", R_daily = "已达每日上限", R_noguild = "没有公会", R_item = "未知物品",
 		R_qty = "数量不允许", R_off = "本服未开放", R_nobot = "没有公会机器人在线", R_cannot = "没有这个配方",
+		-- By leewheel 20261116 回植上游 3.1.3 新增的公会订单无货原因
+		R_noah = "没有存货、没有工匠在线，拍卖行也没有。",
+		R_ahprice = "没有存货、没有工匠在线，拍卖行上也太贵。",
+		R_ahgold = "没有存货、没有工匠在线，也没人有钱去拍卖行买。",
 		R_busy = "工匠正忙", R_mats = "缺少材料", R_expired = "报价已过期：请重新询价",
 		R_faction = "敌方阵营", R_price = "价格上涨了：请重新询价", R_offline = "机器人不在线",
 		R_notyours = "不是你的机器人",
@@ -190,6 +200,8 @@ local STRINGS = {
 		GC_HINT = "你公会在线机器人的存货或可制作物。按英文名搜索；点一件物品下单。",
 		GC_SEARCH = "搜索（英文名）...", GC_NONE = "没有找到。", GC_STOCK = "存货：%s x%d", GC_CRAFT = "由 %s 制作",
 		GC_REQ = "需要 %d 级", GC_PAGE = "第 %d / %d 页", GC_SLOT = "部位：%s", GC_USABLE = "现在就能用", C_OTHER = "其他",
+		-- By leewheel 20261116 回植上游 3.1.3 新增：公会目录刷新按钮
+		GC_REFRESH = "刷新", GC_REFRESH_TIP = "重新请求公会目录。服务器每 5 分钟更新一次。",
 		GA_HINT = "与你同行的公会机器人：把它们召集到你身边、组成地下城小队，或组成公会团队。",
 		GA_gather = "召集公会", GA_party5 = "地下城小队（5 人）", GA_raid10 = "公会团队（10 人）", GA_raid15 = "公会团队（15 人）",
 		GA_raid25 = "公会团队（25 人）", GS_ready = "就绪", GS_busy = "进行中", GS_cooldown = "%s 后可再用", GS_nobots = "机器人不够",
@@ -532,7 +544,7 @@ end
 function W.GM(command)
 	-- What was sent shows at once; the server's lines replace it; none in 3 s: said so, with the command to type.
 	W.gmOut, W.gmUntil, W.gmCmd, W.gmAnswered = { "|cffaaaaaa" .. string.format(T("GM_SENT"), command) .. "|r" }, GetTime() + 3, command, false
-	SendChatMessage(".coaworld " .. command, "SAY")
+	SquidBotsLite_Command(".coaworld " .. command)
 	W.Refresh()
 end
 
@@ -965,7 +977,7 @@ function W.Build()
 	f.askLine:SetJustifyH("LEFT")
 	-- The catalogue's line: search, slot, usable now, pages.
 	f.search = CreateFrame("EditBox", "SquidBotsLiteWorldSearch", f, "InputBoxTemplate")
-	f.search:SetWidth(200)
+	f.search:SetWidth(172)
 	f.search:SetHeight(20)
 	f.search:SetPoint("TOPLEFT", 24, -142)
 	f.search:SetAutoFocus(false)
@@ -992,7 +1004,23 @@ function W.Build()
 	f.slotBtn = CreateFrame("Button", nil, f, "UIPanelButtonTemplate")
 	f.slotBtn:SetWidth(170)
 	f.slotBtn:SetHeight(W.BUTTON_H)
-	f.slotBtn:SetPoint("LEFT", f.search, "RIGHT", 12, 0)
+	-- 3.1.3: Refresh, the catalogue's page asked again (at most every 5 s).
+	f.catRefresh = CreateFrame("Button", nil, f, "UIPanelButtonTemplate")
+	f.catRefresh:SetWidth(W.BUTTON_H)
+	f.catRefresh:SetHeight(W.BUTTON_H)
+	f.catRefresh:SetPoint("LEFT", f.search, "RIGHT", 6, 0)
+	W.StyleButton(f.catRefresh, "Interface\\Buttons\\UI-RefreshButton")
+	f.catRefresh.tabIcon:ClearAllPoints()
+	f.catRefresh.tabIcon:SetPoint("CENTER")
+	f.catRefresh:SetScript("OnClick", function() W.CatRefresh() end)
+	f.catRefresh:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+		GameTooltip:SetText(T("GC_REFRESH"))
+		GameTooltip:AddLine(T("GC_REFRESH_TIP"), 1, 1, 1, true)
+		GameTooltip:Show()
+	end)
+	f.catRefresh:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	f.slotBtn:SetPoint("LEFT", f.catRefresh, "RIGHT", 6, 0)
 	W.StyleButton(f.slotBtn, W.ICONS.filter)
 	f.slotBtn:SetScript("OnClick", function() if W.RecipesShown() then W.SortMenu() else W.SlotMenu() end end)
 	f.usable = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
@@ -1152,7 +1180,9 @@ local insertLink = ChatEdit_InsertLink
 ChatEdit_InsertLink = function(link, ...)
 	local box = W.frame and W.frame.item
 	local id = link and tonumber(link:match("|Hitem:(%d+)"))
-	if id and W.frame and W.frame:IsShown() and W.tab == "guild" and W.guild.mode == "orders" then
+	-- Not while the player writes in the chat: the link goes in the sentence then.
+	local typing = ChatEdit_GetActiveWindow and ChatEdit_GetActiveWindow()
+	if id and not typing and W.frame and W.frame:IsShown() and W.tab == "guild" and W.guild.mode == "orders" then
 		W.askItem = id
 		box:SetText("")
 		box:ClearFocus()
@@ -1306,6 +1336,12 @@ function W.CatPage(page)
 	W.Ask("GCAT\t" .. c.search .. "\t" .. c.page, "cat")
 end
 
+function W.CatRefresh()
+	if W.catRefreshAt and GetTime() - W.catRefreshAt < 5 then return end
+	W.catRefreshAt = GetTime()
+	W.CatPage(W.guild.cat.page)
+end
+
 function W.RecipesShown()
 	return W.tab == "art" and W.art.mode == "recipes"
 end
@@ -1441,7 +1477,13 @@ function W.Rows()
 			end } or nil })
 		for _, o in ipairs(recent) do
 			local state = T("S_" .. (o.state or "open"))
-			if o.reason then state = state .. " : " .. W.Reason(o.reason) end
+			local known = o.reason and T("R_" .. o.reason) ~= "R_" .. o.reason
+			if o.state == "none" then
+				-- 3.1.3 (Monde a0a15db5): why nobody could, in its place; an unknown reason keeps "nobody could" alone.
+				if known then state = T("R_" .. o.reason) end
+			elseif o.reason then
+				state = state .. " : " .. W.Reason(o.reason)
+			end
 			if o.cod > 0 then state = state .. "  " .. W.Money(o.cod) end
 			local color = (o.state == "refused" or o.state == "none") and "|cffff6060" or (o.state == "open") and "|cffaaaaaa" or "|cff40ff40"
 			local by = o.bot and string.format(T("G_BY"), o.bot, W.Ago(o.at)) or W.Ago(o.at)
@@ -1632,7 +1674,7 @@ function W.Refresh()
 		f.drop:Hide()
 		f.askLine:SetText("")
 	end
-	local catControls = { f.search, f.slotBtn, f.usable, f.usableText, f.prev, f.next, f.pageText }
+	local catControls = { f.search, f.catRefresh, f.slotBtn, f.usable, f.usableText, f.prev, f.next, f.pageText }
 	for _, c in ipairs(catControls) do if cat then c:Show() else c:Hide() end end
 	-- The box keeps each view's own text (the catalogue's search, the recipes' search).
 	local searchFor = recipes and "recipes" or cat and "cat" or nil
