@@ -303,7 +303,11 @@ local STRINGS = {
 		-- By leewheel 20261116 回植上游 3.1.3 新增：未知命令提示
 		CMD_UNKNOWN = "本服务器没有 %s 这个命令。",
 		DC_LINE = "地下城清扫", DC_PAUSED = "已暂停", DC_STOPPED = "已停止",
-		DC_NOT_IN_DUNGEON = "地下城清扫需在地下城内、且队伍里有坦克机器人时启动：它带队，你跟随。", DC_ABSENT = "本服没有地下城清扫模块：再点一次「地下城」进入 SquidBots 地下城模式。", DC_ON = "开始", DC_OFF = "结束", DC_PAUSE_B = "暂停", DC_SKIP_B = "跳过",
+		-- By leewheel 20261118 回植上游 3.1.4 新增的 Dungeon Clear 能力探测文案
+		DC_NOT_IN_DUNGEON = "地下城清扫需在地下城内、且队伍里有坦克机器人时启动：它带队，你跟随。", DC_ABSENT = "本服没有地下城清扫模块：再点一次「地下城」进入 SquidBots 地下城模式。", DC_NOT_INSTALLED = "本服没有安装 Dungeon Clear：再点一次「地下城」进入 SquidBots 地下城模式。",
+		TIP_DUNGEON_NODC = "地下城模式：机器人紧跟你、躲避地面效果、与你一同开战。本服未安装 Dungeon Clear。",
+		DC_ON = "开始", DC_OFF = "结束", DC_PAUSE_B = "暂停", DC_SKIP_B = "跳过",
+		-- End By leewheel
 		DC_P_DYN = "动态", DC_P_LEEROY = "莽夫", DC_P_ADV = "进阶",
 		DC_BOSSES_T = "首领", DC_REFRESH = "刷新", DC_GO = "前往", DC_NEXT = "下一个首领：%s", DC_NONE = "无",
 		DC_NO_LIST = "还没有列表：在地下城内、队伍里有坦克机器人时点击刷新。",
@@ -378,7 +382,9 @@ local STRINGS = {
 		BALANCE_DONE = "队伍：%s。", BALANCE_MISSING = "队伍里没有机器人能担任 %s。",
 		BALANCE_WAIT = "正在询问机器人的专精...", BALANCE_RAID = "在团队中，团队命令已经分配好职责：请逐个机器人选择专精。",
 		SPECS_NOT_BOT = "不是机器人", SPEC_ASK = "询问该机器人", TIP_ROLE = "切换到 %s。", TIP_NO_ROLE = "该职责下没有专精。",
-		HELP = "SquidBots Lite：/sbl（显示/隐藏）、/sbl show、/sbl hide、/sbl scale 0.5-2、/sbl lang fr|en|zh、/sbl channel <频道名>、/sbl alts、/sbl dashboard、/sbl spec、/sbl roles on|off、/sbl gm（仅 GM）、/sbl reset。按键设置：Esc > 按键设置 > SquidBots Lite。",
+		-- By leewheel 20261118 回植上游 3.1.4 的帮助文本（新增 /sbl minimap 小地图按钮）
+		HELP = "SquidBots Lite：/sbl（显示/隐藏）、/sbl show、/sbl hide、/sbl scale 0.5-2、/sbl lang fr|en|zh、/sbl channel <频道名>、/sbl alts、/sbl dashboard、/sbl quests、/sbl spec、/sbl keys、/sbl missions、/sbl world、/sbl dc、/sbl bot <名字>、/sbl icons、/sbl raidframes on|off、/sbl questask、/sbl sheettrade on|off、/sbl roles on|off、/sbl minimap（小地图按钮）、/sbl gm（仅 GM）、/sbl reset。按键设置：Esc > 按键设置 > SquidBots Lite。",
+		-- End By leewheel
 		SCALE_SET = "SquidBots Lite 面板缩放：%s（本角色）。", SCALE_BAD = "面板缩放：0.5 到 2 之间的数字，例如 /sbl scale 1.2",
 		LANG_SET = "SquidBots Lite 语言：简体中文。", CHANNEL_SET = "SquidBots Lite 询问频道：%s",
 		ALTS_IN = "正在登录...", ALTS_OUT = "正在登出...",

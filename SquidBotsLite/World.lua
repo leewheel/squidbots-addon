@@ -161,6 +161,12 @@ local STRINGS = {
 		G_ORDERS = "我向公会下的订单", G_GIFTS = "公会寄来的馈赠",
 		G_GIFT_LINE = "由 %s 寄出，%s", G_BY = "%s，%s", AGO = "%s 前",
 		S_open = "等待中", S_shared = "从它背包寄出（免费）", S_crafted = "制作（货到付款）",
+		-- By leewheel 20261118 回植上游 3.1.4 新增：公会库存 / 订单份数 / 目录分类
+		S_bank = "从公会银行寄出（免费）", G_OF = "%d / %d：%s",
+		P_bank = "公会银行", P_shared = "背包", P_crafted = "制作", P_bought = "拍卖行",
+		GC_SHOW = "%s", GC_CAT_all = "全部", GC_CAT_trade = "制造材料", GC_CAT_consumable = "消耗品",
+		GC_CAT_equipment = "装备", GC_CAT_other = "其它", GC_ALL_EQUIP = "全部装备",
+		-- End By leewheel
 		S_bought = "拍卖行购得（货到付款）", S_none = "无人能做到", S_refused = "已拒绝",
 		A_BACK = "< 工匠列表", A_MAILS = "我的订单", A_QUOTE = "询价", A_ORDER = "下单", A_NONE = "本阵营没有工匠机器人在线。",
 		A_PICK = "先点一个工匠，再点一个配方。", A_TITLE = "你阵营在线的工匠机器人（不限于你的公会）：点一个看它的配方。",

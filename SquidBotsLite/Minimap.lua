@@ -27,6 +27,19 @@ local STRINGS = {
 		HIDE = "Cacher ce bouton", HIDDEN = "bouton de minicarte caché : /sbl minimap le remet.",
 		SHOWN = "bouton de minicarte affiché.", CLOSE = "Fermer",
 	},
+	-- By leewheel 20261118 汉化回植：上游 3.1.4 新增的小地图按钮（只有 en/fr 两表）。
+	-- 用词与主文件 zh 表一致：出征任务 / 关键技能 / 世界 / 总览面板。
+	zh = {
+		TITLE = "SquidBots 管理器",
+		TIP_LEFT = "左键：显示或隐藏指令栏与插件窗口。",
+		TIP_RIGHT = "右键：打开菜单。",
+		TIP_DRAG = "拖动：沿小地图移动本按钮。",
+		BAR = "显示指令栏", ALTS = "我的小号", WORLD = "世界", QUESTS = "组队任务", DASH = "总览面板",
+		MISSIONS = "出征任务", KEYS = "关键技能", LANG = "语言：简体中文 / English / Français",
+		HIDE = "隐藏此按钮", HIDDEN = "小地图按钮已隐藏：输入 /sbl minimap 可恢复。",
+		SHOWN = "小地图按钮已显示。", CLOSE = "关闭",
+	},
+	-- End By leewheel
 }
 
 local function T(key)
@@ -98,7 +111,12 @@ function M.Menu()
 		{ text = T("QUESTS"), notCheckable = true, func = function() Slash("quests") end },
 		{ text = T("DASH"), notCheckable = true, func = function() Slash("dashboard") end },
 		{ text = T("MISSIONS"), notCheckable = true, func = function() Slash("missions") end },
-		{ text = T("LANG"), notCheckable = true, func = function() Slash("lang " .. ((db.lang == "fr") and "en" or "fr")) end },
+		-- By leewheel 20261118：上游写死 en/fr 切换，中文服玩家点一下会被踢到法语。
+		-- 改成 zh → en → fr → zh 三语循环，与 /sbl lang fr|en|zh 的支持一致。
+		{ text = T("LANG"), notCheckable = true, func = function()
+			local nextLang = ({ zh = "en", en = "fr", fr = "zh" })[db.lang] or "zh"
+			Slash("lang " .. nextLang)
+		end },
 		{ text = T("HIDE"), notCheckable = true, func = function() M.SetHidden(true) end },
 		{ text = T("CLOSE"), notCheckable = true, func = function() end },
 	}
