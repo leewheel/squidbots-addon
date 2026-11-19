@@ -1,5 +1,7 @@
 ## Interface: 30300
 ## Title: SquidBots Manager
+## Title-zhCN: 鱿鱼机器人管理器
+## Title-zhTW: 魷魚機器人管理器
 ## Notes: A thin bar of bot orders, role badges on the party frames, lfg bot offers as toasts - CoA Bots
 ## Notes-frFR: Une barre fine d'ordres aux bots, rôles sur les cadres de groupe, offres lfg bot en notifications - CoA Bots
 ## Notes-zhCN: 机器人指令细条：队伍框架上的职责标记、随机副本机器人应征弹窗、主坦克栏、世界面板 —— CoA 机器人

@@ -638,7 +638,8 @@ local function SetLanguage(lang)
 	SquidBotsLiteDB.lang = lang
 	L = STRINGS[lang]
 	-- Names shown in the game's Key Bindings window (the bindings themselves are in Bindings.xml).
-	BINDING_HEADER_SQUIDBOTSLITE = "SquidBots Manager"
+	-- By leewheel 20261120 按键绑定窗口的分组标题本地化（原先恒为英文 SquidBots Manager）
+	BINDING_HEADER_SQUIDBOTSLITE = ({ en = "SquidBots Manager", fr = "SquidBots Manager", zh = "鱿鱼机器人管理器" })[lang] or "鱿鱼机器人管理器"
 	for _, binding in ipairs(BINDINGS) do
 		_G["BINDING_NAME_SQUIDBOTSLITE_" .. string.upper(binding[1])] = L[binding[2]]
 	end

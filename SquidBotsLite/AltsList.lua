@@ -63,8 +63,9 @@ local STRINGS = {
 }
 
 function AL.T(key)
-	local lang = SquidBotsLiteDB and SquidBotsLiteDB.lang
-	return (STRINGS[lang] or STRINGS.en)[key] or STRINGS.en[key] or key
+	-- By leewheel 20261120 本服默认简体中文（SquidBotsLiteDB.lang 尚未写入时不要退回英语表）
+	local lang = (SquidBotsLiteDB and SquidBotsLiteDB.lang) or "zh"
+	return (STRINGS[lang] or STRINGS.zh or STRINGS.en)[key] or STRINGS.en[key] or key
 end
 local T = AL.T
 
