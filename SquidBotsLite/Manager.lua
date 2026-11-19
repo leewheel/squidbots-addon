@@ -324,6 +324,21 @@ local STRINGS = {
 		SEL_GIVE_ASK = "正在与 %s 开启交易，共 %d 件...",
 		SEL_GIVE_MAX = "给我：一次交易最多 6 件（已选 %d）",
 		SEL_GIVE_BOUND = "%d 件已绑定，无法交易，已跳过。",
+		-- By leewheel 20261120 3.1.6 新增：队内小号列、交给小号、信任度、物品读取
+		ALTS_COL = "队内小号", ALTS_COL_LEVEL = "%d 级", ALTS_COL_TIP = "点击：在同页打开它的面板。",
+		ALTS_COL_SHOWN = "当前显示的就是它的面板。",
+		ALTS_COL_DROP = "把背包里的物品拖到这里：会交给这只小号。",
+		GA_MENU = "交给小号", GA_MENU_OLD = "交给小号（需服务端升级）", GA_MENU_NONE = "交给小号（队里没有别的小号）",
+		GA_NOTALT = "交给小号：只能在自己的小号之间进行，不能给招募来的机器人。",
+		GA_BOUND_SHORT = "已绑定", GA_BOUND = "%s 已绑定：不能交给其他小号。",
+		GA_OLD = "「交给小号」需要服务端升级（CoA 机器人 3.1.6）。",
+		GA_SENT = "%s：已发送给 %s…", GA_DONE = "%s 把 %s 交给了 %s。", GA_ERR = "%s 没能交出 %s：%s。",
+		GA_R_bound = "物品已绑定", GA_R_notalt = "只能给自己的小号", GA_R_notgroup = "那只小号不在你的队伍里",
+		GA_R_full = "它的背包满了", GA_R_missing = "它没有那么多", GA_R_off = "服务端已关闭该功能",
+		TRUST = "信任度：%s", TRUST_NEXT = "%d / %d - 下一级：%s", TRUST_MAX = "%d - 已达最高等级",
+		TR_stranger = "陌生", TR_acquaintance = "相识", TR_companion = "同伴", TR_friend = "朋友",
+		TR_trusted = "信赖", TR_sworn = "誓约",
+		ITEM_LOADING = "正在从服务端读取物品…",
 	},
 }
 local function T(key)

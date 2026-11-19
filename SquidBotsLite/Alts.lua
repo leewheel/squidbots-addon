@@ -243,6 +243,10 @@ local STRINGS = {
 		S_missing_bare = "前置任务未完成",
 		S_reputation_bare = "声望不足",
 		S_skill_bare = "技能不足",
+		-- By leewheel 20261120 3.1.6 新增：静音
+		MUTE_ON = "静音已开：你的机器人不再闲聊（仍会回应你的指令）。",
+		MUTE_OFF = "静音已关：你的机器人恢复闲聊。",
+		MUTE_OLD = "静音需要服务端升级（CoA 机器人 3.1.6）。",
 	},
 }
 local function T(key)

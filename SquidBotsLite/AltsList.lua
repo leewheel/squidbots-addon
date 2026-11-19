@@ -43,6 +43,23 @@ local STRINGS = {
 		COPY = "%s (copie)",
 		GROUP_LOGIN = "Connecter les bots de mon groupe (%d)", GROUP_STARTED = "connexion de %d bots de votre groupe.",
 	},
+	-- By leewheel 20261120 简体中文（本服维护，随上游升级回植）
+	zh = {
+		SORT = "排序：%s", SORT_BY = "按以下方式排序", S_online = "在线优先", S_name = "名字", S_played = "最近上线",
+		S_team = "队伍", S_level = "等级", SHOW_HIDDEN = "显示已隐藏的小号（%d）", UNHIDE_ALL = "取消隐藏全部小号",
+		HIDE = "从我的小号列表中隐藏", UNHIDE = "在我的小号列表中显示", HIDE_ACCOUNT = "隐藏账号 %s 的全部小号",
+		HIDDEN_TAG = "已隐藏", HIDDEN = "%s 已从你的小号列表中隐藏（排序 > 显示已隐藏的小号 可恢复）。",
+		ACC_HIDE = "把它的小号从我的列表隐藏（已知 %d 个）", ACC_SHOW = "把它的小号显示在我的列表",
+		ACC_UNKNOWN = "隐藏它的小号：请先从这里登录一次",
+		AGO_NOW = "刚刚", AGO_MIN = "%d 分钟前", AGO_H = "%d 小时前", AGO_D = "%d 天前", PLAYED = "最近上线：%s",
+		NO_TEAM = "无队伍", TEAMS_TIP = "所属队伍：%s",
+		EDIT = "编辑…", DUPLICATE = "复制一份", NEW = "新建队伍…", E_TITLE = "队伍", E_NAME = "名称：",
+		E_MEMBERS = "队内成员（%d）", E_ALTS = "你的小号", E_SAVE = "保存", E_CANCEL = "取消",
+		E_HELP = "点击或拖动小号可在两栏间移动。上下拖动成员即可调整登录顺序。",
+		E_NONAME = "请给队伍起个名字。", E_EXISTS = "已经有一个队伍叫 %s 了。", E_SAVED = "队伍 %s 已保存（%d）。",
+		COPY = "%s（副本）",
+		GROUP_LOGIN = "登录我队伍里的机器人（%d）", GROUP_STARTED = "正在登录你队伍里的 %d 个机器人。",
+	},
 }
 
 function AL.T(key)

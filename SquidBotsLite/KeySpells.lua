@@ -88,6 +88,9 @@ local STRINGS = {
 		N_busy = "机器人没能施放", N_notgroup = "你的目标不在队伍里", N_immune = "目标免疫", N_held = "坦克已经控制住了",
 		N_full = "目标生命值已满",
 		TIP_FULL = "显示机器人的全部关键法术。", TIP_SMALL = "只显示三个快捷操作。",
+		-- By leewheel 20261120 3.1.6 新增
+		HINT_FULL = "机器人的关键法术：点 + 查看全部。",
+		TIP_CLOSE = "隐藏这一栏（点「按键」按钮可再打开）。",
 		-- End By leewheel
 	},
 	-- End By leewheel
